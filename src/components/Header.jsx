@@ -5,17 +5,22 @@ import AddTask from "./AddTask"
 
 const Header = () => {
     const [addTask, setAddTask] = useState(true)
-    const handleClick = () => {
+    const [btnChng, setBtnChng] = useState(true)
+
+    const handleClick = (e) => {
         setAddTask(!addTask)
+        setBtnChng(!btnChng)
+
     }
     return (
-        <Container className="text-center m-2">
-            <h1>Task Tracker</h1>
-            <ButtonAdd click={handleClick} />
-
-            {addTask
-                ? <p>No Tasks to Show</p>
-                : <AddTask />}
+        <Container>
+            <h1 className="text-center m-2">Task Tracker</h1>
+            <ButtonAdd handleClick={handleClick} btnChng={btnChng} />
+            <Container>
+                {addTask
+                    ? <p>No Tasks to Show</p>
+                    : <AddTask />}
+            </Container>
         </Container>
 
 

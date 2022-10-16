@@ -4,19 +4,20 @@ import CloseButton from 'react-bootstrap/CloseButton';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const Tasks = () => {
+const Tasks = ({ task, date }) => {
     return (
-        <div className="card mt-3">        <Card>
-            <Row>
-                <Col lg={10}>
-                    <Card.Body>This is some text within a card body.</Card.Body>
-                    {/* <Card.Body>This is some text within a card body.</Card.Body> */}
-                </Col>
-                <Col lg={1}>  <CloseButton /></Col>
+        <div className="card mt-3">
+            <Card>
+                <Row>
+                    <Col lg={10}>
+                        <Card.Body>{task}</Card.Body>
+                        <Card.Body>{date}</Card.Body>
+                    </Col>
+                    <Col lg={1}>  <CloseButton /></Col>
 
-            </Row>
+                </Row>
 
-        </Card>
+            </Card>
         </div>
 
     )
