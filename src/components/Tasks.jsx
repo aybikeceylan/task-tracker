@@ -4,14 +4,18 @@ import CloseButton from 'react-bootstrap/CloseButton';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const Tasks = ({ task, date }) => {
+const Tasks = ({ index, item }) => {
+    console.log('item', item);
     return (
         <div className="card mt-3">
-            <Card>
+            <Card key={index}>
                 <Row>
-                    <Col lg={10}>
-                        <Card.Body>{task}</Card.Body>
-                        <Card.Body>{date}</Card.Body>
+                    <Col lg={9}>
+
+                        {/* {item?.map((todo) => {
+                            return <Card.Body>{todo}</Card.Body>
+                        })} */}
+
                     </Col>
                     <Col lg={1}>  <CloseButton /></Col>
 

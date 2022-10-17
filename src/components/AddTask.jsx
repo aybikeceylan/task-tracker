@@ -7,44 +7,43 @@ import Tasks from './Tasks';
 
 
 const AddTask = () => {
-    const [task, setTask] = useState("")
-    const [date, setDate] = useState("")
-    const [sbmt, setSbmt] = useState(true)
+    const [todo, setTodo] = useState({ task: "", date: "" })
+    const { task, date } = todo
+    const [data, setData] = useState([])
     const handleSubmit = (e) => {
         e.preventDefault()
-        setTask("")
-        setDate("")
-        setSbmt(!sbmt)
-    }
-    const handleTask = (e) => {
-        setTask(e.target.value)
-    }
-
-    const handleDate = (e) => {
-        setDate(e.target.value)
+        console.log("submitted");
+        setData([...data, { todos: todo }])
+        setTodo({ task: "", date: "" })
+        console.log(data)
 
     }
+    const handleChange = (e) => {
+        setTodo({ ...todo, [e.target.id]: e.target.value })
+    }
+
 
     return (
 
         <Container className="">
             <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="Task">
+                <Form.Group className="mb-3" controlId="task">
                     <Form.Label>Task</Form.Label>
-                    <Form.Control type="text" placeholder="AddTask" value={task} onChange={handleTask} />
+                    <Form.Control type="text" placeholder="AddTask" value={task} onChange={handleChange} />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="Day">
+                <Form.Group className="mb-3" controlId="date">
                     <Form.Label>Day&Time</Form.Label>
-                    <Form.Control type="datetime-local" placeholder="Add Day & Time" value={date} onChange={handleDate} />
+                    <Form.Control type="datetime-local" placeholder="Add Day & Time" value={date} onChange={handleChange} />
                 </Form.Group>
                 <Button variant="info" type="submit" className="w-100">
                     Save Task
                 </Button>
             </Form>
-            {sbmt
-                ? ""
-                : <Tasks task={task} date={date} />}
+            {data.map((item, index) => {
+                console.log(item);
+                return <Tasks key={index} item={item} />
+            })}
 
         </Container>
     )
