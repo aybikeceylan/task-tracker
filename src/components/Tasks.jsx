@@ -4,20 +4,32 @@ import CloseButton from 'react-bootstrap/CloseButton';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const Tasks = ({ index, item }) => {
+const Tasks = ({ index, item, data, setData }) => {
     const [show, setShow] = useState(true)
     const [isDone, setIsDone] = useState(false);
     console.log('item', item);
     const handleShow = (e) => {
         setShow(!show)
-        console.log(e.target.key);
-        // localStorage.removeItem(e.target.key())
+        console.log(e.target.id);
+        console.log(id);
+
+        data = data.filter((item) => {
+            return (
+                item.id !== Number(e.target.id)
+            )
+        })
+
+        setData(data);
+        localStorage.setItem('items', JSON.stringify(data));
 
     }
     const handleClick = () => {
 
         setIsDone(!isDone)
     }
+    console.log(data);
+
+    const { id, task, date } = item
 
     return (
 
@@ -25,25 +37,20 @@ const Tasks = ({ index, item }) => {
         <div>
             {show
                 ? <div className="card mt-3" onClick={handleClick} style={{
-                    textDecoration: isDone ? 'line-through' : '',
+                    textDecoration: isDone ? 'line-through' : ''
                 }}>
                     <Card key={index} >
                         <Row>
                             <Col lg={11} xs={10} >
+
                                 <ul className="task" >
-                                    {Object.values(item).map((todo) => {
-                                        console.log(todo)
-                                        console.log(index)
 
-                                        return <li >{todo}</li>
-
-                                    })
-                                    }
-
+                                    <li >{task}</li>
+                                    <li >{date}</li>
                                 </ul>
 
                             </Col>
-                            <Col lg={1} xs={2}>  <CloseButton onClick={handleShow} /></Col>
+                            <Col lg={1} xs={2}>  <CloseButton onClick={handleShow} id={id} /></Col>
                         </Row>
                     </Card>
                 </div>

@@ -14,6 +14,7 @@ const AddTask = ({ addTask }) => {
 
 
 
+
     useEffect(() => {
         const items = JSON.parse(localStorage.getItem('items'));
         console.log(items);
@@ -44,8 +45,12 @@ const AddTask = ({ addTask }) => {
     }
     const handleChange = (e) => {
         e.target.value !== "" &&
-            setTodo({ ...todo, [e.target.id]: e.target.value })
+            setTodo({
+                ...todo,
+                [e.target.id]: e.target.value,
+                id: new Date().getTime(),
 
+            })
     }
 
 
@@ -76,7 +81,7 @@ const AddTask = ({ addTask }) => {
 
                 ? data.map((item, index) => {
                     console.log(item);
-                    return <Tasks index={index} item={item} />
+                    return <Tasks index={index} item={item} data={data} setData={setData} />
                 })
 
                 : <p>No Task to Show</p>}
