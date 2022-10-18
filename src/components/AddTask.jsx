@@ -30,7 +30,7 @@ const AddTask = () => {
 
     }
     const handleChange = (e) => {
-        e.target.value != "" &&
+        e.target.value !== "" &&
             setTodo({ ...todo, [e.target.id]: e.target.value })
 
     }
