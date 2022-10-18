@@ -1,28 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card';
 import CloseButton from 'react-bootstrap/CloseButton';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const Tasks = ({ index, item }) => {
+    const [show, setShow] = useState(true)
+    const [isDone, setIsDone] = useState(false);
     console.log('item', item);
+    const handleShow = () => {
+        setShow(!show)
+    }
+    const handleClick = () => {
+
+        setIsDone(!isDone)
+    }
     return (
-        <div className="card mt-3">
-            <Card key={index}>
-                <Row>
-                    <Col lg={9}>
 
-                        {/* {item?.map((todo) => {
-                            return <Card.Body>{todo}</Card.Body>
-                        })} */}
 
-                    </Col>
-                    <Col lg={1}>  <CloseButton /></Col>
+        <div>
+            {show
+                ? <div className="card mt-3" onClick={handleClick} style={{
+                    textDecoration: isDone ? 'line-through' : '',
+                }}>
+                    <Card key={index} >
+                        <Row>
+                            <Col lg={11} xs={10}>
+                                <ul className="task">
+                                    {Object.values(item).map((todo) => {
+                                        console.log(todo)
+                                        return <li>{todo}</li>
 
-                </Row>
+                                    })
+                                    }
 
-            </Card>
-        </div>
+                                </ul>
+
+                            </Col>
+                            <Col lg={1} xs={2}>  <CloseButton onClick={handleShow} /></Col>
+                        </Row>
+                    </Card>
+                </div>
+
+
+
+                : <div></div>
+            }
+        </div >
+
 
     )
 }

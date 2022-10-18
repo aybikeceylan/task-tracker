@@ -13,10 +13,10 @@ const Header = () => {
 
     }
     return (
-        <Container>
+        <Container className='head' >
             <h1 className="text-center m-2">Task Tracker</h1>
             <ButtonAdd handleClick={handleClick} btnChng={btnChng} />
-            <Container>
+            <Container className="text-center m-2">
                 {addTask
                     ? <p>No Tasks to Show</p>
                     : <AddTask />}
