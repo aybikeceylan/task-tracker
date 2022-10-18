@@ -5,7 +5,7 @@ function App() {
   return (
 
     <div className="App">
-      <Container className="main w-50 h-75 " >
+      <Container className="main w-50 h-95 " >
         <Header />
       </Container>
 

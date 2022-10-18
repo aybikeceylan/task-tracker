@@ -55,7 +55,7 @@ const AddTask = () => {
             </Form>
             {data.map((item, index) => {
                 console.log(item);
-                return <Tasks key={index} item={item} />
+                return <Tasks index={index} item={item} />
             })}
 
         </Container>

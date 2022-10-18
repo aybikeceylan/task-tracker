@@ -23,13 +23,15 @@ const Tasks = ({ index, item }) => {
                 ? <div className="card mt-3" onClick={handleClick} style={{
                     textDecoration: isDone ? 'line-through' : '',
                 }}>
-                    <Card key={index} >
+                    <Card  >
                         <Row>
-                            <Col lg={11} xs={10}>
-                                <ul className="task">
+                            <Col lg={11} xs={10} >
+                                <ul className="task" >
                                     {Object.values(item).map((todo) => {
                                         console.log(todo)
-                                        return <li>{todo}</li>
+                                        console.log(index)
+                                        index++
+                                        return <li key={index}>{todo}</li>
 
                                     })
                                     }
