@@ -10,13 +10,15 @@ const Tasks = ({ index, item }) => {
     console.log('item', item);
     const handleShow = (e) => {
         setShow(!show)
-        localStorage.removeItem(e.target.key)
+        console.log(e.target.key);
+        // localStorage.removeItem(e.target.key())
 
     }
     const handleClick = () => {
 
         setIsDone(!isDone)
     }
+
     return (
 
 
