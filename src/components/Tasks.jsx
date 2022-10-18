@@ -8,8 +8,10 @@ const Tasks = ({ index, item }) => {
     const [show, setShow] = useState(true)
     const [isDone, setIsDone] = useState(false);
     console.log('item', item);
-    const handleShow = () => {
+    const handleShow = (e) => {
         setShow(!show)
+        localStorage.removeItem(e.target.key)
+
     }
     const handleClick = () => {
 
@@ -23,15 +25,15 @@ const Tasks = ({ index, item }) => {
                 ? <div className="card mt-3" onClick={handleClick} style={{
                     textDecoration: isDone ? 'line-through' : '',
                 }}>
-                    <Card  >
+                    <Card key={index} >
                         <Row>
                             <Col lg={11} xs={10} >
                                 <ul className="task" >
                                     {Object.values(item).map((todo) => {
                                         console.log(todo)
                                         console.log(index)
-                                        index++
-                                        return <li key={index}>{todo}</li>
+
+                                        return <li >{todo}</li>
 
                                     })
                                     }
