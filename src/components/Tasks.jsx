@@ -33,12 +33,12 @@ const Tasks = ({ index, item, data, setData }) => {
 
 
         <div>
-            <div className="card mt-3" onClick={handleClick} style={{
+            <div className="card mt-3"  style={{
                     textDecoration: isDone ? 'line-through' : ''
                 }}>
                     <Card key={index} >
                         <Row>
-                            <Col lg={11} xs={10} >
+                            <Col lg={11} xs={10} onClick={handleClick} >
 
                                 <ul className="task" >
 
