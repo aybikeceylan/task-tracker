@@ -5,11 +5,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const Tasks = ({ index, item, data, setData }) => {
-    const [show, setShow] = useState(true)
     const [isDone, setIsDone] = useState(false);
     console.log('item', item);
     const handleShow = (e) => {
-        setShow(!show)
         console.log(e.target.id);
         console.log(id);
 
@@ -35,13 +33,12 @@ const Tasks = ({ index, item, data, setData }) => {
 
 
         <div>
-            {show
-                ? <div className="card mt-3" onClick={handleClick} style={{
-                    textDecoration: isDone ? 'line-through' : ''
-                }}>
+            <div className="card mt-3" >
                     <Card key={index} >
                         <Row>
-                            <Col lg={11} xs={10} >
+                            <Col lg={11} xs={10} onClick={handleClick}  style={{
+                                     textDecoration: isDone ? 'line-through' : ''
+                                       }} >
 
                                 <ul className="task" >
 
@@ -54,11 +51,6 @@ const Tasks = ({ index, item, data, setData }) => {
                         </Row>
                     </Card>
                 </div>
-
-
-
-                : <div></div>
-            }
         </div >
 
 
