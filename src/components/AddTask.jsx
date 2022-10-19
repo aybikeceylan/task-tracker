@@ -34,11 +34,7 @@ const AddTask = ({ addTask }) => {
         setTodo({ task: "", date: "" })
 
         console.log(data)
-        const form = e.currentTarget;
-        if (form.checkValidity() === false) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
+
 
         setValidated(true);
 
