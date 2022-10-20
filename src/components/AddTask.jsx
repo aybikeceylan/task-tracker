@@ -7,7 +7,6 @@ import Tasks from './Tasks';
 
 
 const AddTask = ({ addTask }) => {
-    const [validated, setValidated] = useState(false);
     const [todo, setTodo] = useState({ task: "", date: "" })
     const { task, date } = todo
     const [data, setData] = useState([])
@@ -36,8 +35,6 @@ const AddTask = ({ addTask }) => {
         console.log(data)
 
 
-        setValidated(true);
-
     }
     const handleChange = (e) => {
         e.target.value !== "" &&
@@ -48,16 +45,24 @@ const AddTask = ({ addTask }) => {
 
             })
     }
+    const handleKey = (e) => {
+        if ((e.keyCode == 8) && (e.target.value.length == 1)) {
+            setTodo({
+                ...todo,
+                task: "",
+            })
+        }
+    }
 
 
     return (
 
         <Container className="form">
             {addTask
-                ? <Form onSubmit={handleSubmit} validated={validated} >
+                ? <Form onSubmit={handleSubmit} >
                     <Form.Group className="mb-3" controlId="task">
                         <Form.Label>Task</Form.Label>
-                        <Form.Control required type="text" placeholder="AddTask" value={task} onChange={handleChange} />
+                        <Form.Control required type="text" placeholder="AddTask" value={task} onChange={handleChange} onKeyDown={handleKey} />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="date">
